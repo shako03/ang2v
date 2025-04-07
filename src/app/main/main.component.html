@@ -1,0 +1,35 @@
+<p>main works!</p>
+
+
+<main>
+    <form #studentForm="ngForm"
+       (ngSubmit)="save(studentForm)">
+
+            <input type="text" name="name" id="" [(ngModel)]="newStudent.name">
+            <input type="number" name="age" id="" [(ngModel)]="newStudent.age">
+            <input type="text" name="grade" id="" [(ngModel)]="newStudent.grade">
+            <input type="text" name="subject" id="" [(ngModel)]="newStudent.subject">
+            <input type="checkbox" name="isEnrolled" id="" [(ngModel)]="newStudent.isEnrolled">
+            <input type="text" name="street" id="" [(ngModel)]="newStudent.address.street">
+            <input type="text" name="city" id="" [(ngModel)]="newStudent.address.city">
+            <input type="number" name="zip" id="" [(ngModel)]="newStudent.address.zip">
+
+            <button type="submit">Save</button>
+    
+    </form>
+    <button (click)="showList()">Show List</button>
+</main>
+
+
+<app-display-data 
+     [studentData]="studentArr"
+     [visible]="isVisible"
+     (deleteSt)="deleteStudent($event)"
+     (editSt)="editSudent($event)"
+     
+     ></app-display-data>
+
+
+
+
+

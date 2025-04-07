@@ -1,0 +1,20 @@
+<p>display-data works!</p>
+
+
+
+
+<div class="cont" *ngIf="visible">
+
+
+    <app-card 
+            *ngFor="let studerntFromParent of studentData let i = index"
+            [studernt] ="studerntFromParent"
+             [ind]  = "i"
+            (delSt)="delete($event)"
+            (edditSt)="edit($event)"
+
+           ></app-card>
+
+</div>
+
+
