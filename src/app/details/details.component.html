@@ -1,1 +1,10 @@
-
+<main>
+      <div class="card">
+            <img [src]="singleUser?.avatar" alt="">
+            <div class="card-body">
+                  <h5>{{singleUser?.first_name}} , {{singleUser?.last_name}}</h5>
+                  <p>{{singleUser?.email}}</p>
+                  <a routerLink="/users">go back</a>
+            </div>
+      </div>
+</main>
