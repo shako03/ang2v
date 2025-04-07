@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { User } from '../Models/user';
-import { CommonFuncService } from '../Services/common-func.service';
+
 
 @Component({
   selector: 'app-details',
@@ -10,12 +10,9 @@ import { CommonFuncService } from '../Services/common-func.service';
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent  {
 
-     constructor(private rout : ActivatedRoute, private commonFunc :CommonFuncService){
-       this.rout.params.subscribe(data => this.getSngleUser(data['id']))
 
-     }
 
   singleUser? : User = new User()  
 
@@ -63,24 +60,6 @@ export class DetailsComponent implements OnInit {
       avatar: 'https://reqres.in/img/faces/6-image.jpg',
     },
   ];
-
-    getSngleUser(id : number){
-
-      this.singleUser = this.userArr.find((user) => user.id == id)
-      // console.log(`user info ${this.singleUser}`)
-      this.commonFunc.printinConsole("user info", JSON.stringify(this.singleUser))
-
-    }
-
-
-
-     ngOnInit(){
-       console.log("hi")
-       this.titles = []
-      //  console.log(this.rout.snapshot.queryParamMap.get("id"))
-     }
-
-     titles = []
 
 
      
