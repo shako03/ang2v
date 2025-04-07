@@ -13,7 +13,10 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 export class DetailsComponent  {
 
 
-
+constructor(private rout: ActivatedRoute) { 
+  this.rout.params.subscribe((data => ['id']))
+  
+ }
 
   
      

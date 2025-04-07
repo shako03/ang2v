@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
+import { User } from '../Models/user';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
 export class UsersComponent {
 
-  userArr = [
+  userArr : User[] = [
     {
       id: 1,
       email: 'george.bluth@reqres.in',

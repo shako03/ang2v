@@ -10,9 +10,9 @@ export const routes: Routes = [
 
     {path: "home", component:HomeComponent},
     {path: "main", component:MainComponent},
-    {path: "details/:id", component:DetailsComponent},
+    {path: "details/:id", component:DetailsComponent}, //id გვინდა რო 1 კომპონენტი წაიღოს მარტო
     {path: "**", component: ErrorComponent}
-
+    
 ];
 
 
