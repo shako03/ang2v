@@ -16,7 +16,7 @@ export class UsersComponent {
   constructor(private httpUsers : ApiService){}
 
   ngOnInit(){
-    
+    this.httpUsers.getAllUsers().subscribe((resp : any) => console.log(resp))
   }
 
 

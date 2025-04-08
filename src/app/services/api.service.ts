@@ -9,8 +9,7 @@ export class ApiService {
   constructor(private http : HttpClient) { }
 
   getAllUsers(){
-    return this.http.get('https://reqres.in/api/users')
-    
+    return this.http.get('https://reqres.in/api/users')    
   }
 
 }
