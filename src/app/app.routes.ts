@@ -9,10 +9,12 @@ export const routes: Routes = [
     {path: "", redirectTo: "home", pathMatch: "full"},
 
 
-    {path: "home", component:HomeComponent},
-    {path: "main", component:MainComponent},
-    {path: "details/:id", component:DetailsComponent}, //id გვინდა რო 1 კომპონენტი წაიღოს მარტო
-    {path: "users", component:UsersComponent},
+
+    {path: "home", loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)},
+    {path: "main", loadComponent: () => import('./main/main.component').then(m => m.MainComponent)},
+    {path: "users", loadComponent: () => import('./users/users.component').then(m => m.UsersComponent)},
+    {path: "details/:id", loadComponent: () => import('./details/details.component').then(m => m.DetailsComponent)},
+
 
 
     {path: "**", component: ErrorComponent}

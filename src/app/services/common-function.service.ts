@@ -7,8 +7,8 @@ export class CommonFunctionService {
 
   constructor() { }
 
-  print(){
-    console.log("hello from common function service")
+  printInConsole(name : string, obj : any){
+    console.log(`${name} :  ${obj}`);
   }
 }
  

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { User } from '../Models/user';
 import { CommonModule } from '@angular/common';
+import { CommonFunctionService } from '../services/common-function.service';
 // import { User } from '../Models/user';
 
 
@@ -16,7 +17,7 @@ export class DetailsComponent {
 
 
 
-  constructor(private rout: ActivatedRoute) {
+  constructor(private rout: ActivatedRoute, private commonFunction : CommonFunctionService) {
     this.rout.params.subscribe(( data =>   this.getSingleUser(data['id'])  )) 
 
   }
@@ -72,7 +73,8 @@ export class DetailsComponent {
   getSingleUser(id: number) {
 
     this.singleUser = this.userArr.find((user) => user.id == id)
-    console.log(this.singleUser);
+
+    this.commonFunction.printInConsole("singleUser", JSON.stringify(this.singleUser))
 
   }
 
