@@ -3,6 +3,7 @@ import { User } from '../Models/user';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -13,12 +14,15 @@ import { ApiService } from '../services/api.service';
   styleUrl: './users.component.scss'
 })
 export class UsersComponent {
-  constructor(private httpUsers : ApiService){}
+  constructor(private httpUsers : UserService){}
 
   ngOnInit(){
     this.httpUsers.getAllUsers().subscribe((resp : any) => {
       console.log(resp.data)
-      this.renderUser(resp)
+      this.renderUser(resp.data)
+    })
+    this.httpUsers.getAllProducts().subscribe((resp : any) => {
+      this.getProducts(resp)
     })
   }
 
@@ -26,6 +30,10 @@ export class UsersComponent {
     this.userArr = arr
   }
 
+
+  getProducts(arr : any){
+    console.log(arr)
+  }
 
 
   userArr : User[] = []

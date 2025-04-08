@@ -3,13 +3,15 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { User } from '../Models/user';
 import { CommonModule } from '@angular/common';
 import { CommonFunctionService } from '../services/common-function.service';
+import { ApiService } from '../services/api.service';
+import { UserService } from '../services/user.service';
 // import { User } from '../Models/user';
 
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule,],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
@@ -17,12 +19,16 @@ export class DetailsComponent {
 
 
 
-  constructor(private rout: ActivatedRoute, private commonFunction : CommonFunctionService) {
-    this.rout.params.subscribe(( data =>   this.getSingleUser(data['id'])  )) 
+  constructor(private rout: ActivatedRoute,
+    private commonFunction: CommonFunctionService,
+    private api: UserService
+  ) {
+    this.rout.params.subscribe((data => this.getSingleUser(data['id'])))
 
   }
 
-  singleUser? : User = new User(); //new user-ით შევქმენით singleUser 
+  singleUser?: User = new User();
+
 
   userArr: User[] = [
     {
@@ -70,21 +76,20 @@ export class DetailsComponent {
   ];
 
 
-  getSingleUser(id: number) {
 
-    this.singleUser = this.userArr.find((user) => user.id == id)
+  getSingleUser(id : number){
 
-    this.commonFunction.printInConsole("singleUser", JSON.stringify(this.singleUser))
 
-  }
+      this.api.getUserById(id).subscribe((data : any) => {   
+  console.log(data.data)
+   })
 
 }
 
 
 
-// life cycle hook
+}
 
-///fetch     prommise         then
-// params    observable       subsccrite
+
 
 
