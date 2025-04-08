@@ -16,7 +16,14 @@ export class UsersComponent {
   constructor(private httpUsers : ApiService){}
 
   ngOnInit(){
-    this.httpUsers.getAllUsers().subscribe((resp : any) => console.log(resp))
+    this.httpUsers.getAllUsers().subscribe((resp : any) => {
+      console.log(resp.data)
+      this.renderUser(resp)
+    })
+  }
+
+  renderUser(arr : User[]){
+    this.userArr = arr
   }
 
 
