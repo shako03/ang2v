@@ -26,6 +26,8 @@ export class UsersComponent {
     })
   }
 
+
+  
   renderUser(arr : User[]){
     this.userArr = arr
   }

@@ -81,6 +81,9 @@ export class DetailsComponent {
     this.api.getUserById(id).subscribe((data: any) => {
       console.log(data.data)
     })
+    
+
+
 
   }
 
