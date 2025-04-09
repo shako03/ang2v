@@ -77,14 +77,14 @@ export class DetailsComponent {
 
 
 
-  getSingleUser(id : number){
+  getSingleUser(id: number) {
 
 
-      this.api.getUserById(id).subscribe((data : any) => {   
-  console.log(data.data)
-   })
+    this.api.getUserById(id).subscribe((data: any) => {
+      console.log(data.data)
+    })
 
-}
+  }
 
 
 
