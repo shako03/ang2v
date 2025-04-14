@@ -1,36 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { User } from '../Models/user';
-import { CommonModule } from '@angular/common';
-import { CommonFunctionService } from '../services/common-function.service';
-import { ApiService } from '../services/api.service';
-import { UserService } from '../services/user.service';
-// import { User } from '../Models/user';
-
+import { CommonFuncService } from '../Services/common-func.service';
+import { UserService } from '../Services/user.service';
+import { ErrorDialogComponent } from "../error-dialog/error-dialog.component";
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterModule, CommonModule,],
+  imports: [RouterModule, ErrorDialogComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
+
+     constructor(private rout : ActivatedRoute, 
+          private commonFunc :CommonFuncService,
+           private api : UserService){
+       this.rout.params.subscribe(data => this.getSngleUser(data['id']))
+
+     }
 
 
+    //  currentDate = new Date()
 
-  constructor(private rout: ActivatedRoute,
-    private commonFunction: CommonFunctionService,
-    private api: UserService
-  ) {
-    this.rout.params.subscribe((data => this.getSingleUser(data['id'])))
-
-  }
-
-  singleUser?: User = new User();
-
-
-  userArr: User[] = [
+  // singleUser? : User = new User()  
+  singleUser :any
+  userArr : User[] = [
     {
       id: 1,
       email: 'george.bluth@reqres.in',
@@ -75,22 +71,50 @@ export class DetailsComponent {
     },
   ];
 
+    getSngleUser(id : number){
+      // this.singleUser = this.userArr.find((user) => user.id == id)
+      // console.log(`user info ${this.singleUser}`)
+        this.commonFunc.printinConsole("user info", JSON.stringify(this.singleUser))
+        this.api.getUserById(id).subscribe((resp: any) => {   
+        this.singleUser = resp.data
+     })
 
 
-  getSingleUser(id: number) {
-    this.api.getUserById(id).subscribe((data: any) => {
-      console.log(data.data)
-    })
+    }
+  //  როცა არ მუშაობდა    this.api.getUserById(id).subscribe((resp) => {     აქ resp ს სჭირდებოდა any ტიპი 
+      
+    // getSngleUser(id : number){
+
+    //   // this.singleUser = this.userArr.find((user) => user.id == id)
+    //   // console.log(`user info ${this.singleUser}`)
+    //   this.commonFunc.printinConsole("user info", JSON.stringify(this.singleUser))
+
+    //     this.api.getUserById(id).subscribe((resp) => {   
+    //     this.singleUser = resp.data
+    //  })
+
+
+    // }
+ 
+
     
+     ngOnInit(){
+
+     }
+
+     titles = []
 
 
-
-  }
-
-
+     
 
 }
 
 
+
+
+// life cycle hook
+
+///fetch     prommise         then
+// params    observable       subsccrite
 
 

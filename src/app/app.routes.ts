@@ -6,19 +6,50 @@ import { DetailsComponent } from './details/details.component';
 import { UsersComponent } from './users/users.component';
 
 export const routes: Routes = [
+                                   /////////////////////////    eagger Loading
+    // {path: "", redirectTo: "home", pathMatch: "full"},
+
+
+    // {path: "home", component:HomeComponent},
+    // {path: "main", component:MainComponent},
+    // {path: "details/:id", component:DetailsComponent},
+    // {path: "users", component:UsersComponent},
+
+    // {path: "**", component: ErrorComponent}
+                                 
+    
+                                    /////////////////////////    lazy Loading
+
     {path: "", redirectTo: "home", pathMatch: "full"},
-
-
-
-    {path: "home", loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)},
-    {path: "main", loadComponent: () => import('./main/main.component').then(m => m.MainComponent)},
-    {path: "users", loadComponent: () => import('./users/users.component').then(m => m.UsersComponent)},
-    {path: "details/:id", loadComponent: () => import('./details/details.component').then(m => m.DetailsComponent)},
-
-
+    {
+        path: "home",
+        loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
+    },
+    {
+        path: "main",
+        loadComponent: () => import('./main/main.component').then(m => m.MainComponent)
+    },
+    {
+        path: "details/:id",
+        loadComponent: () => import('./details/details.component').then(m => m.DetailsComponent)
+    },
+    { 
+        path: "users",
+        loadComponent: () => import('./users/users.component').then(m => m.UsersComponent)
+    },
+    { 
+        path: "register",
+        loadComponent: () => import('./register/register.component').then(m => m.RegisterComponent)
+    },
+    { 
+        path: "login",
+        loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
+    },
 
     {path: "**", component: ErrorComponent}
-    
+
+
+
 ];
 
 

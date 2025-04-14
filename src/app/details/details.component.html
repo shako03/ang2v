@@ -1,11 +1,14 @@
-<main>
-      <div class="card">
-            <img [src]="singleUser?.avatar" alt="">
-            <div class="card-body">
-                  <h5>{{singleUser?.first_name}} , {{singleUser?.last_name}}</h5>
-                  <p>{{singleUser?.email}}</p>
-                  <a routerLink="/users">go back</a>
-            </div>
-      </div>
-</main>
+<div class="card" style="width: 18rem;">
+    <img [src]="singleUser?.avatar" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{singleUser?.first_name}} {{singleUser?.last_name}}</h5>
+      <h5 class="card-title">{{singleUser?.email}}</h5>
+      <a routerLink="/users" class="btn btn-primary">Go Back</a>
+    </div>
+  </div>
 
+
+  <!-- <p>{{currentDate}}</p> -->
+
+
+  <app-error-dialog></app-error-dialog>
